@@ -35,6 +35,7 @@ import '../styles/quality.css'
 const TICK_STYLE = { fontSize: 9, fill: '#9b9b9b', fontFamily: 'DM Sans, sans-serif' }
 
 function TrendsChart({ series, selectedWeek }) {
+  const [zoomIn, setZoomIn] = useState(true)
   const coachingLabel = series[1]?.label
   const chartData = series.map((row, i) => ({
     ...row,
@@ -43,16 +44,42 @@ function TrendsChart({ series, selectedWeek }) {
 
   return (
     <div className="qa-card">
-      <h2 className="qa-card-title">
-        Performance Trends
-        <span className="qa-card-subtitle">(5-week period)</span>
-      </h2>
+      <div className="qa-card-head">
+        <h2 className="qa-card-title">
+          Performance Trends
+          <span className="qa-card-subtitle">(5-week period)</span>
+        </h2>
+        <div className="qa-zoom-toggle" role="group" aria-label="Chart scale">
+          <button
+            type="button"
+            className={`qa-zoom-btn${zoomIn ? ' qa-zoom-btn-active' : ''}`}
+            aria-pressed={zoomIn}
+            onClick={() => setZoomIn(true)}
+          >
+            Zoom in
+          </button>
+          <button
+            type="button"
+            className={`qa-zoom-btn${!zoomIn ? ' qa-zoom-btn-active' : ''}`}
+            aria-pressed={!zoomIn}
+            onClick={() => setZoomIn(false)}
+          >
+            Zoom out
+          </button>
+        </div>
+      </div>
       <div className="qa-trends-chart">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={chartData} margin={{ top: 28, right: 12, left: 0, bottom: 4 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="#ececec" />
             <XAxis dataKey="label" tick={TICK_STYLE} axisLine={false} tickLine={false} />
-            <YAxis domain={[0, 100]} tick={TICK_STYLE} axisLine={false} tickLine={false} width={32} />
+            <YAxis
+              domain={zoomIn ? [50, 100] : [0, 100]}
+              tick={TICK_STYLE}
+              axisLine={false}
+              tickLine={false}
+              width={32}
+            />
             <Tooltip
               formatter={(value, name) => [`${value}%`, name]}
               contentStyle={{ fontSize: 12, borderRadius: 8, border: '0.5px solid #e5e5e2' }}
