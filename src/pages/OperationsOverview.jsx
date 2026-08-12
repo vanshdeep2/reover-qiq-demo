@@ -170,7 +170,7 @@ export default function OperationsOverview() {
               </p>
               <p>
                 <strong>What has not moved yet.</strong> Blended CSAT is flat at 3.9 and repeat
-                contact rate is still climbing to 24.6%. Continuation CSAT has moved 1.70 to 1.88,
+                contact rate is still climbing to 24.6%. CSAT has moved 1.70 to 1.88,
                 which is early movement and not yet a recovery. That is the honest read four weeks
                 into a behavioural fix on a 41,500-contact population. Critical failures are the
                 leading indicator and they are already at zero. CSAT and repeat contact rate are the
@@ -293,7 +293,7 @@ export default function OperationsOverview() {
         <div className="connector">Agent Performance Matrix · Week 5</div>
         <p className="section-sublabel">
           Ranked by critical failures. QA is within a point across the whole team, so the scorecard
-          cannot separate these agents. Auto-fails and continuation CSAT can.
+          cannot separate these agents. Auto-fails and CSAT can.
         </p>
         <LedgerTable
           tableClassName="matrix-table"

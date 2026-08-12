@@ -13,7 +13,7 @@ function statusOf(m) {
 
 export const TEAM_HEALTH_STATS = [
   { label: 'Team QA Score', value: '91.4', valueClass: 'val-green', sub: 'Overall QA average · all 2,077 contacts' },
-  { label: 'Continuation CSAT', value: '1.8', valueClass: 'val-red', sub: 'Vs 4.2 on first contacts' },
+  { label: 'CSAT', value: '1.8', valueClass: 'val-red', sub: 'Vs 4.2 on first contacts' },
   { label: 'Critical failures', value: '0', valueClass: 'val-green', sub: 'Week 5 · down from 7 in week 1' },
   { label: 'Agents with auto-fails', value: '9/10', valueClass: 'val-amber', sub: 'Pattern is team-wide, not individual' },
 ]
@@ -52,7 +52,7 @@ export const ALERT_AGENTS = FLAGGED_AGENT_SLUGS.slice(0, 3).map((slug) => {
     name: m.name,
     status,
     badgeClass,
-    metrics: `${m.criticalFailures} critical failure${m.criticalFailures === 1 ? '' : 's'} · QA ${m.qaScore.toFixed(1)}% · Continuation CSAT ${m.continuationCsat.toFixed(2)} · Empathy ${m.empathy.toFixed(2)}`,
+    metrics: `${m.criticalFailures} critical failure${m.criticalFailures === 1 ? '' : 's'} · QA ${m.qaScore.toFixed(1)}% · CSAT ${m.continuationCsat.toFixed(2)} · Empathy ${m.empathy.toFixed(2)}`,
     insight: `QA of ${m.qaScore.toFixed(1)}% is at or above the team average of ${TEAM_AGGREGATES.qaScore}%, so the scorecard reads clean. ${m.criticalFailures} contact${m.criticalFailures === 1 ? '' : 's'} still auto-failed on empathy, all on follow-ups to incidents that were already open.`,
     action: `${top?.title || 'Micro Coaching'} is card 1 in the pack.${top?.personalNote ? ` Their numbers: ${top.personalNote}` : ''}${second ? ` ${second.title} follows at rank 2.` : ''} Track auto-fails weekly rather than QA.`,
   }
@@ -66,7 +66,7 @@ export const COACHING_QUEUE = AGENT_METRIC_ORDER.map((slug) => {
   return {
     agent: m.name,
     topic: topCoachingTopic(m),
-    source: `${m.criticalFailures} auto-fail${m.criticalFailures === 1 ? '' : 's'} · continuation CSAT ${m.continuationCsat.toFixed(2)}`,
+    source: `${m.criticalFailures} auto-fail${m.criticalFailures === 1 ? '' : 's'} · CSAT ${m.continuationCsat.toFixed(2)}`,
     deployed: 'Week 2',
     status,
     badgeClass: status === 'On Track' ? 'badge-green' : status === 'Improving' ? 'badge-green' : badgeClass,

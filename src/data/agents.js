@@ -56,7 +56,7 @@ export const MICRO_COACHING_CARDS = [
   },
 ]
 
-/** Status is derived from real critical failures and continuation CSAT. */
+/** Status is derived from real critical failures and CSAT. */
 function statusFor(m) {
   if (m.criticalFailures >= 3) return 'Action Needed'
   if (m.criticalFailures >= 1 || m.continuationCsat < TEAM_AGGREGATES.continuationCsat) return 'Watch'

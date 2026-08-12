@@ -84,7 +84,7 @@ export const TREND = {
 /**
  * The Micro Coaching intervention story. Deployed after week 1 quality mining
  * surfaced the empathy gap on continuation contacts (see hero narrative).
- * Critical failure counts and continuation CSAT are the two metrics that respond
+ * Critical failure counts and CSAT are the two metrics that respond
  * directly and quickly to coaching; the blended population-wide KPIs above take
  * longer to recover, which is realistic for a 41,500-contact/week population and
  * is exactly why leading indicators matter.
@@ -101,7 +101,7 @@ export const CRITICAL_FAILURES = {
 }
 
 /**
- * Weekly continuation CSAT, computed from the contact extract. This is the
+ * Weekly CSAT, computed from the contact extract. This is the
  * lagging indicator: it has started to move but has not recovered. Do not
  * overstate it. The metric that responds fast to coaching is CRITICAL_FAILURES.
  */
@@ -238,7 +238,7 @@ export const CROSS_KPI_PATTERNS = [
     headline: 'Late cancellation: continuation contacts pass QA and collapse CSAT',
     body: 'First-contact CSAT 4.2 vs continuation 1.8 while QA barely moves, 92.3% to 89.0%. Per-contact scorecards cannot see the incident trail.',
     rootCause:
-      'Week 1 quality mining flagged a specific behavioural gap rather than a process one: agents handling continuation contacts on late-cancellation incidents were procedurally correct but showed no acknowledgement of the incident history. The pattern was most visible on Janine Jacobs and Zanele Ndlovu, both scoring above 88% QA while continuation CSAT sat near 1.8. Micro Coaching card 1, open with the incident not the ticket, was deployed to the most exposed agents and the wider team from week 2. Critical failures fell from 7 to 0 over the following four weeks while QA held flat throughout. Continuation CSAT has begun to move, 1.70 to 1.88, and is the lagging indicator to watch next period.',
+      'Week 1 quality mining flagged a specific behavioural gap rather than a process one: agents handling continuation contacts on late-cancellation incidents were procedurally correct but showed no acknowledgement of the incident history. The pattern was most visible on Janine Jacobs and Zanele Ndlovu, both scoring above 88% QA while CSAT sat near 1.8. Micro Coaching card 1, open with the incident not the ticket, was deployed to the most exposed agents and the wider team from week 2. Critical failures fell from 7 to 0 over the following four weeks while QA held flat throughout. CSAT has begun to move, 1.70 to 1.88, and is the lagging indicator to watch next period.',
     trend: {
       title: 'CSAT · 5-week',
       weeks: WK_LABELS,
@@ -323,7 +323,7 @@ export const CROSS_KPI_PATTERNS = [
 
 export const HERO_CHIPS = [
   {
-    text: 'Continuation CSAT 1.8 vs first contact 4.2',
+    text: 'CSAT 1.8 vs first contact 4.2',
     className: 'chip-red',
     dotColor: '#fca5a5',
   },

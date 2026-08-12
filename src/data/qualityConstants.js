@@ -50,7 +50,7 @@ export const CAMPAIGN_SUMMARY_BY_WEEK = [
     paragraphs: [
       'Coaching opens every continuation contact with the incident, not the ticket. Critical failures are down to {criticalFailures} from the week-1 peak, but it is still too early to see clear movement in the aggregate metrics.',
       'Process adherence ({processAdherencePct}%) and resolution ({resolutionRatePct}%) remain healthy across {total} contacts. Positive CSAT is {positiveCsatPct}%.',
-      'The core argument still holds: a contact can pass every scorecard question and still fail the member, and per-contact QA scoring cannot see the incident trail that drives continuation CSAT down.',
+      'The core argument still holds: a contact can pass every scorecard question and still fail the member, and per-contact QA scoring cannot see the incident trail that drives CSAT down.',
     ],
     wow: 'Critical failures {criticalFailures} · process adherence {processAdherencePct}% · positive CSAT {positiveCsatPct}% · coaching live from week 2',
     chips: [
@@ -100,7 +100,7 @@ export const CAMPAIGN_SUMMARY_BY_WEEK = [
   },
   {
     headline:
-      'Only {criticalFailures} critical failure remains. Continuation CSAT is recovering as Micro Coaching settles into habit.',
+      'Only {criticalFailures} critical failure remains. CSAT is recovering as Micro Coaching settles into habit.',
     paragraphs: [
       'Process adherence ({processAdherencePct}%) and resolution ({resolutionRatePct}%) hold across {total} contacts. Positive CSAT is {positiveCsatPct}%.',
       'A contact can still pass every scorecard question and fail the member when policy, not behaviour, is the blocker. The matrix is now separating those two problems.',

@@ -1738,7 +1738,7 @@ export const AGENT_METRIC_ORDER = [
   "zanele-ndlovu"
 ]
 
-/** Ranked by critical failures, then by continuation CSAT ascending. */
+/** Ranked by critical failures, then by CSAT ascending. */
 export const FLAGGED_AGENT_SLUGS = [
   "janine-jacobs",
   "ayanda-mbeki",

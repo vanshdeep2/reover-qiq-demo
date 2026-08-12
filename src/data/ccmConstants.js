@@ -46,7 +46,7 @@ export const HERO_CHIPS = [
 export const HERO_STATS = [
   { value: '7 → 0', label: 'Critical failures across coaching' },
   { value: '89.0%', label: 'Continuation QA, flat all period' },
-  { value: '1.8', label: 'Continuation CSAT vs 4.2 first contact' },
+  { value: '1.8', label: 'CSAT vs 4.2 first contact' },
   { value: 'Week 2', label: 'Micro Coaching deployment start' },
   { value: '17', label: 'Empathy auto-fails found by quality mining' },
 ]
@@ -76,7 +76,7 @@ export const COACHING_LEDGER_ROWS = [
   { agent: 'Sipho Khumalo', issue: 'Guarantee continuations closed without route', topic: 'Never close without a route', deployed: 'Week 2 - Micro Coaching card 3', outcome: 'Improving named owners on close', badges: [{ text: 'In Progress', className: 'badge badge-amber' }] },
   { agent: 'Busisiwe Maseko', issue: 'Messaging continuations without trail read', topic: 'Incident trail before reply', deployed: 'Week 2 - Micro Coaching card 1', outcome: 'Uptake started on messaging', badges: [{ text: 'In Progress', className: 'badge badge-amber' }] },
   { agent: 'Lerato Nkosi', issue: 'Sitter standing fears left unspoken', topic: 'Say the standing concern', deployed: 'Week 2 - Micro Coaching card 4', outcome: 'Account Standing contacts improving', badges: [{ text: 'In Progress', className: 'badge badge-amber' }] },
-  { agent: 'Ayanda Mbeki', issue: 'First-contact strong · continuation gap', topic: 'Micro Coaching suite', deployed: 'Week 2', outcome: 'Continuation CSAT trending up', badges: [{ text: 'Improving', className: 'badge badge-green' }] },
+  { agent: 'Ayanda Mbeki', issue: 'First-contact strong · continuation gap', topic: 'Micro Coaching suite', deployed: 'Week 2', outcome: 'CSAT trending up', badges: [{ text: 'Improving', className: 'badge badge-green' }] },
   { agent: 'Michael Naidoo', issue: 'No coaching needed on first contact', topic: 'Peer coaching source', deployed: 'Week 2', outcome: 'Modelling incident-first opens', badges: [{ text: 'Benchmark', className: 'badge badge-trophy' }] },
 ]
 
@@ -93,7 +93,7 @@ export const PATTERN_CARDS = [
     variant: 'red',
     title: 'Continuation failure invisible to per-contact QA',
     level: 'System level',
-    body: 'Continuation CSAT 1.8 vs first-contact 4.2 while QA stays near 89%. Scorecards judge tickets in isolation. The incident trail is the instrument that sees the damage.',
+    body: 'CSAT 1.8 vs first-contact 4.2 while QA stays near 89%. Scorecards judge tickets in isolation. The incident trail is the instrument that sees the damage.',
     tags: [
       { text: 'CSAT -2.2', className: 'tag tag-red' },
       { text: 'QA flat', className: 'tag tag-amber' },
@@ -113,9 +113,9 @@ export const PATTERN_CARDS = [
   },
   {
     variant: 'green',
-    title: 'Micro Coaching cards lift continuation CSAT',
+    title: 'Micro Coaching cards lift CSAT',
     level: 'Team level - Best practice',
-    body: 'After week-2 deployment, weekly critical failures fall from 7 to 0. Agents who open with the incident and name a route forward stop producing auto-fails, without waiting for policy change. Continuation CSAT is the slower measure and has moved 1.70 to 1.88 so far.',
+    body: 'After week-2 deployment, weekly critical failures fall from 7 to 0. Agents who open with the incident and name a route forward stop producing auto-fails, without waiting for policy change. CSAT is the slower measure and has moved 1.70 to 1.88 so far.',
     tags: [
       { text: 'CSAT +1.2', className: 'tag tag-green' },
       { text: '7/10 uptake', className: 'tag tag-green' },
@@ -136,7 +136,7 @@ export const PATTERN_CARDS = [
 export const BEST_PRACTICE_CARDS = [
   {
     title: 'Open with the incident trail before the ticket',
-    evidence: 'Evidence: continuation CSAT recovers when agents read history first · QA stays high either way',
+    evidence: 'Evidence: CSAT recovers when agents read history first · QA stays high either way',
     agents: 'Agents: Michael Naidoo modelling · Janine and Zanele coaching focus',
     rec: 'Recommendation: Make incident-first open the default on contact_sequence > 1.',
   },

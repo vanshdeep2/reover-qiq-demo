@@ -205,7 +205,7 @@ function AgentContextTab({ call }) {
         )}
         {agent?.continuationCsat != null && (
           <div className="agent-context-status">
-            Continuation CSAT avg: {agent.continuationCsat.toFixed(2)} · Continuation QA:{' '}
+            CSAT avg: {agent.continuationCsat.toFixed(2)} · Continuation QA:{' '}
             {agent.continuationQa}%
           </div>
         )}

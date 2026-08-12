@@ -15,7 +15,7 @@ export const INTERNAL_VOC_STRIP = [
     volumeNote: 'Booking Cancellation + Refund & Fees ~25% of weekly contacts',
     workaround: 'Owners booking a backup sitter in parallel on a second Rover search because they do not trust the in-app replacement flow to find someone in time.',
     evidence: 'A late sitter cancellation produces a first contact scoring CSAT 5 and QA 94%, then a continuation contact from the same owner scoring CSAT 1-2 while QA still holds at 90-91%. The scorecard cannot see the second contact is the same emergency, the pet still needs a sitter.',
-    action: 'Micro Coaching card 1, open every continuation contact with the incident, deployed week 2 to the agents most exposed to this pattern. Weekly critical failures are down from 7 to 0. Continuation CSAT has started to move, 1.70 to 1.88.',
+    action: 'Micro Coaching card 1, open every continuation contact with the incident, deployed week 2 to the agents most exposed to this pattern. Weekly critical failures are down from 7 to 0. CSAT has started to move, 1.70 to 1.88.',
   },
   {
     id: 'onboarding',
@@ -122,9 +122,9 @@ export const COMBINED_VOC_ISSUES = {
       id: 'continuation',
       title: 'Continuation contacts',
       summary: 'Lowest-scoring group internally; the same friction shows up externally as effort and no clear route to a human.',
-      internal: 'Continuation CSAT sat at 1.70 in week 1 against 4.22 on first contact, while QA held at 88-90% throughout, the gap per-contact scoring cannot see. 26% of Booking Cancellation contacts showed this pattern, 7 severe enough to be logged as critical failures.',
+      internal: 'CSAT sat at 1.70 in week 1 against 4.22 on first contact, while QA held at 88-90% throughout, the gap per-contact scoring cannot see. 26% of Booking Cancellation contacts showed this pattern, 7 severe enough to be logged as critical failures.',
       external: 'Members describe no clear route to a human when a follow-up on an already-open issue stalls, read publicly as the company not caring rather than a process gap.',
-      action: 'Micro Coaching card 1 (open with the incident, not the ticket) deployed team-wide from week 2. Critical failures down 7 → 0. Continuation CSAT moving 1.70 → 1.88, the lagging indicator to watch.',
+      action: 'Micro Coaching card 1 (open with the incident, not the ticket) deployed team-wide from week 2. Critical failures down 7 → 0. CSAT moving 1.70 → 1.88, the lagging indicator to watch.',
       status: 'Critical failures cleared · live team-wide since week 2',
     },
   ],
@@ -229,7 +229,7 @@ export const ACTION_DETAILS = {
     summary:
       'Nine of ten agents carried at least one auto-fail on the same pattern, so the incident-first coaching pack was rolled out team-wide from week 2, not held to the two or three agents who surfaced it first. The decision now is to keep it a standing requirement, not a one-off pilot.',
     rationale:
-      'Janine Jacobs carried the most critical failures on the team, with Ayanda Mbeki and Zanele Ndlovu close behind. All three scored above 88% QA while continuation CSAT sat near rock bottom on the same contacts. The underlying pattern, treating a continuation contact as a fresh ticket, showed up across almost the whole team, so the fix was built team-wide from the start.',
+      'Janine Jacobs carried the most critical failures on the team, with Ayanda Mbeki and Zanele Ndlovu close behind. All three scored above 88% QA while CSAT sat near rock bottom on the same contacts. The underlying pattern, treating a continuation contact as a fresh ticket, showed up across almost the whole team, so the fix was built team-wide from the start.',
     owner: 'CCM + Team Leads',
     timeline: 'Live team-wide since week 2, this decision is whether it stays a permanent standard',
     impact: 'Critical failures already 7 → 0 across the team. Keeping it mandatory is what holds that line as continuation volume grows.',
@@ -285,14 +285,14 @@ export const ACTION_DETAILS = {
   },
   'watch-critical-failures': {
     category: 'Watch next week',
-    title: 'Critical failures and continuation CSAT trend',
-    summary: 'Confirm critical failures hold at 0 and continuation CSAT keeps climbing now that coaching is standard across the whole team.',
+    title: 'Critical failures and CSAT trend',
+    summary: 'Confirm critical failures hold at 0 and CSAT keeps climbing now that coaching is standard across the whole team.',
     rationale:
       'Both metrics have been recovering since week 2. The real test is whether the same recovery holds as continuation-contact volume grows and coaching moves from a new habit to routine practice.',
     owner: 'CCM + Team Leads',
     timeline: 'Reviewed weekly',
     impact: 'A held or improving trend here is the leading confirmation that the coaching fix holds at team-wide scale, not just on the agents who surfaced it first.',
-    kpis: ['Critical failures', 'Continuation CSAT'],
+    kpis: ['Critical failures', 'CSAT'],
   },
   'watch-csat': {
     category: 'Watch next week',

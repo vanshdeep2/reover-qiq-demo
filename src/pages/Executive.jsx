@@ -63,7 +63,7 @@ function useMetricConfigs() {
       drivers: [
         { a: 'Booking Cancellation', b: 'Continuation contacts scoring 1.8 CSAT vs 4.2 on first contact' },
         { a: 'Account Standing', b: '31% of contacts closed with no route forward for the member' },
-        { a: 'Micro Coaching', b: 'Critical failures 7 → 0 since week 2 · continuation CSAT 1.70 → 1.88' },
+        { a: 'Micro Coaching', b: 'Critical failures 7 → 0 since week 2 · CSAT 1.70 → 1.88' },
       ],
     },
     rcr: {
@@ -530,14 +530,14 @@ export default function Executive() {
               <p>
                 In week 2 we rolled out Micro Coaching built around exactly this: open every repeat call
                 by naming what already happened, not starting fresh. Critical failures fell every week
-                after and hit zero by week 5. Continuation CSAT, the slower measure, has started to move
+                after and hit zero by week 5. CSAT, the slower measure, has started to move
                 too, 1.70 to 1.88. We're applying the same fix to Account Standing next.
               </p>
             </div>
             <p className="hero-wow">
               Critical failures {CRITICAL_FAILURES.peakWeek} → {CRITICAL_FAILURES.currentWeek} ·
               continuation QA held at {FIRST_VS_CONTINUATION.qaScorecardPct.continuation}% throughout ·
-              continuation CSAT {CONTINUATION_CSAT_RECOVERY.startValue} → {CONTINUATION_CSAT_RECOVERY.currentValue}, the lagging measure
+              CSAT {CONTINUATION_CSAT_RECOVERY.startValue} → {CONTINUATION_CSAT_RECOVERY.currentValue}, the lagging measure
             </p>
             <div className="hero-chips">
               {HERO_CHIPS.map((chip) => (
@@ -610,7 +610,7 @@ export default function Executive() {
                 {healthBandLabel(health.health)}
               </span>
               <span className="score-vel">
-                QA {OVERALL_QA_PCT}% · continuation CSAT {CONTINUATION_CSAT_RECOVERY.currentValue}
+                QA {OVERALL_QA_PCT}% · CSAT {CONTINUATION_CSAT_RECOVERY.currentValue}
               </span>
             </div>
           </div>
@@ -979,7 +979,7 @@ export default function Executive() {
               <div className="watch-dot" style={{ background: 'var(--green)' }} />
               <div>
                 <div className="watch-title">
-                  Critical failures at {CRITICAL_FAILURES.currentWeek}, continuation CSAT at{' '}
+                  Critical failures at {CRITICAL_FAILURES.currentWeek}, CSAT at{' '}
                   {CONTINUATION_CSAT_RECOVERY.currentValue}
                 </div>
                 <div className="watch-proj">
