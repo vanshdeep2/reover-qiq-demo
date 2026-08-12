@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import DonutWithCentre from './DonutWithCentre'
 import LtvBreakdownDrawer from './LtvBreakdownDrawer'
-import { RISK_LINES, SUPPLY_RISK_LINES } from '../data/ltvCopy'
-import { fmtDonutCentre, fmtGBPK, fmtMillionShort } from '../utils/format'
+import { AT_RISK_LINES, AT_RISK_SIDE_LEGEND, COACHING_VALUE_LINES } from '../data/ltvCopy'
+import { fmtDonutCentre, fmtGBPK } from '../utils/format'
 
-const RISK_DONUT_COLORS = ['#c0392b', '#d9534f', '#e8806f']
-const SUPPLY_DONUT_COLORS = ['#d97706']
+const AT_RISK_DONUT_COLORS = AT_RISK_LINES.map((line) => line.dotColor)
+const COACHING_DONUT_COLORS = COACHING_VALUE_LINES.map((line) => line.dotColor)
+const PERIOD_LABEL = '5 weeks · Estimate'
 
 function openBreakdown(setBreakdown, panel) {
   return (e) => {
@@ -35,9 +36,8 @@ export default function MemberLtvSection({ ltv, onOpenSettings }) {
     return () => document.removeEventListener('keydown', onKey)
   }, [breakdown])
 
-  const riskDonut = RISK_LINES.map((line) => ltv[line.key])
-  const supplyRiskDonut = SUPPLY_RISK_LINES.map((line) => ltv[line.key])
-  const totalSurfaced = ltv.totalExposure
+  const riskDonut = AT_RISK_LINES.map((line) => ltv[line.key])
+  const coachingDonut = COACHING_VALUE_LINES.map((line) => ltv[line.key])
 
   return (
     <>
@@ -45,8 +45,8 @@ export default function MemberLtvSection({ ltv, onOpenSettings }) {
       <div className="ltv-section-head">
         <p className="section-sublabel ltv-section-sublabel">
           Two-sided marketplace · Pet parent LTV {fmtGBPK(ltv.petParentLtvGbp)} · Sitter LTV{' '}
-          {fmtGBPK(ltv.sitterLtvGbp)} · Modelled from the assumptions on file, refreshed as Micro
-          Coaching outcomes land · Adjust assumptions using view / edit assumptions
+          {fmtGBPK(ltv.sitterLtvGbp)} · Shows LTV still at risk and value already protected by Micro
+          Coaching · Estimate · Adjust assumptions using view / edit assumptions
         </p>
         <button type="button" className="metrics-cta ltv-assumptions-cta" onClick={onOpenSettings}>
           View / edit assumptions
@@ -62,7 +62,7 @@ export default function MemberLtvSection({ ltv, onOpenSettings }) {
           onKeyDown={finCardKeyDown(setBreakdown, 'risk')}
         >
           <div className="fin-card-top">
-            <div className="fin-label">Pet parent LTV at risk · Continuation failure</div>
+            <div className="fin-label">Member LTV at risk · Two-sided marketplace</div>
             <div className="fin-drill" onClick={openBreakdown(setBreakdown, 'risk')}>
               View breakdown →
             </div>
@@ -70,63 +70,39 @@ export default function MemberLtvSection({ ltv, onOpenSettings }) {
           <div className="fin-body">
             <DonutWithCentre
               data={riskDonut}
-              colors={RISK_DONUT_COLORS}
-              total={ltv.totalRisk}
+              colors={AT_RISK_DONUT_COLORS}
+              total={ltv.periodExposure}
               valueClass="val-red"
+              label={PERIOD_LABEL}
             />
             <div className="fin-legend">
-              {RISK_LINES.map((line) => (
-                <div key={line.key} className="leg-item">
-                  <span className="leg-dot" style={{ background: line.dotColor }} />
-                  <span className="leg-label">{line.legendLabel}</span>
-                  <span className="leg-val val-red">{fmtDonutCentre(ltv[line.key])}</span>
-                </div>
-              ))}
-              <div className="leg-divider" />
-              <div className="leg-item">
-                <span className="leg-label" style={{ fontWeight: 600, color: 'var(--muted)' }}>
-                  Annualised
-                </span>
-                <span className="leg-val val-red">{fmtGBPK(ltv.totalRisk)}</span>
+              <div className="fin-side-key" aria-label="Marketplace side colour key">
+                {AT_RISK_SIDE_LEGEND.map((item) => (
+                  <div key={item.label} className="fin-side-key-item">
+                    <span className="leg-dot" style={{ background: item.color }} />
+                    <span className="fin-side-key-label">{item.label}</span>
+                  </div>
+                ))}
               </div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          className="fin-card"
-          onClick={() => setBreakdown('supply')}
-          role="button"
-          tabIndex={0}
-          onKeyDown={finCardKeyDown(setBreakdown, 'supply')}
-        >
-          <div className="fin-card-top">
-            <div className="fin-label">
-              Sitter LTV at risk · Onboarding abandonment
-            </div>
-            <div className="fin-drill" onClick={openBreakdown(setBreakdown, 'supply')}>
-              View breakdown →
-            </div>
-          </div>
-          <div className="fin-body">
-            <DonutWithCentre
-              data={supplyRiskDonut}
-              colors={SUPPLY_DONUT_COLORS}
-              total={ltv.totalSupplyRisk}
-              valueClass="val-amber"
-            />
-            <div className="fin-legend">
-              {SUPPLY_RISK_LINES.map((line) => (
+              {AT_RISK_LINES.map((line) => (
                 <div key={line.key} className="leg-item">
                   <span className="leg-dot" style={{ background: line.dotColor }} />
                   <span className="leg-label">{line.legendLabel}</span>
-                  <span className="leg-val val-amber">{fmtDonutCentre(ltv[line.key])}</span>
+                  <span className={`leg-val ${line.valueClass}`}>
+                    {fmtDonutCentre(ltv[line.key])}
+                  </span>
                 </div>
               ))}
               <div className="leg-divider" />
               <div className="leg-item">
                 <span className="leg-label" style={{ fontWeight: 600, color: 'var(--muted)' }}>
-                  Addressable by verification NBA
+                  Annualised at risk
+                </span>
+                <span className="leg-val val-red">{fmtGBPK(ltv.totalExposure)}</span>
+              </div>
+              <div className="leg-item">
+                <span className="leg-label" style={{ fontWeight: 600, color: 'var(--muted)' }}>
+                  Addressable by verification NBA (annualised)
                 </span>
                 <span className="leg-val val-amber">{fmtGBPK(ltv.verificationAddressable)}</span>
               </div>
@@ -134,11 +110,53 @@ export default function MemberLtvSection({ ltv, onOpenSettings }) {
           </div>
         </div>
 
+        <div
+          className="fin-card"
+          onClick={() => setBreakdown('coaching')}
+          role="button"
+          tabIndex={0}
+          onKeyDown={finCardKeyDown(setBreakdown, 'coaching')}
+        >
+          <div className="fin-card-top">
+            <div className="fin-label">LTV protected by Micro Coaching · Pet parents</div>
+            <div className="fin-drill" onClick={openBreakdown(setBreakdown, 'coaching')}>
+              View breakdown →
+            </div>
+          </div>
+          <div className="fin-body">
+            <DonutWithCentre
+              data={coachingDonut}
+              colors={COACHING_DONUT_COLORS}
+              total={ltv.periodProtected}
+              valueClass="val-green"
+              label={PERIOD_LABEL}
+            />
+            <div className="fin-legend">
+              {COACHING_VALUE_LINES.map((line) => (
+                <div key={line.key} className="leg-item">
+                  <span className="leg-dot" style={{ background: line.dotColor }} />
+                  <span className="leg-label">{line.legendLabel}</span>
+                  <span className="leg-val val-green">{fmtDonutCentre(ltv[line.key])}</span>
+                </div>
+              ))}
+              <div className="leg-divider" />
+              <div className="leg-item">
+                <span className="leg-label" style={{ fontWeight: 600, color: 'var(--muted)' }}>
+                  Annualised protected
+                </span>
+                <span className="leg-val val-green">{fmtGBPK(ltv.valueProtected)}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="net-card">
-          <div className="net-eyebrow">Total LTV exposure surfaced this period</div>
-          <div className="net-val">{fmtMillionShort(totalSurfaced)}</div>
-          <div className="net-sub">Pet parent revenue at risk + sitter supply-side loss, neither yet fully addressed</div>
-          <div className="net-annualised">Annualised · {fmtGBPK(totalSurfaced)}</div>
+          <div className="net-eyebrow">Total LTV impact surfaced this period</div>
+          <div className="net-val">{fmtGBPK(ltv.periodSurfaced)}</div>
+          <div className="net-sub">
+            Pet parent + sitter at risk + Micro Coaching value protected · 5 weeks · Estimate
+          </div>
+          <div className="net-annualised">Annualised · {fmtGBPK(ltv.totalSurfaced)}</div>
         </div>
       </div>
 

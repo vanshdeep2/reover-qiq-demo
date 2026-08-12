@@ -207,6 +207,8 @@ const LTV_FIELDS = [
   { id: 'churnUpliftPct', label: 'Churn uplift on cohort (%)', step: 0.5 },
   { id: 'sittersAbandoningWeekly', label: 'Sitters abandoning onboarding / week', step: 1 },
   { id: 'verificationDeflectionWeekly', label: 'Verification NBA weekly deflection', step: 1 },
+  { id: 'coachingMembersWeekly', label: 'Pet parents reached by coaching / week', step: 10 },
+  { id: 'coachingProtectionPct', label: 'Micro Coaching protection rate (%)', step: 1 },
 ]
 
 function LtvSettingsModal({ open, onClose, draft, onChange, onRecalculate, onReset }) {
